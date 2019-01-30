@@ -70,7 +70,48 @@ ModelImporter:
     4300020: door_exit_inner_left_001
     4300022: door_exit_inner_right_001
     9500000: //RootNode
-  externalObjects: {}
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: prop_battleBus_body_mat
+    second: {fileID: 2100000, guid: 35191d363a1896845b4e9c4624aecf1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: prop_battleBus_wheels_mat
+    second: {fileID: 2100000, guid: 0e14a9120306d4343ba94763988820c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: prop_fan_mat
+    second: {fileID: 2100000, guid: ad1ff6b691c290a4cb3b9855e3db77dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tile_floor_rubber_mat
+    second: {fileID: 2100000, guid: 4c202b8580a8ebe42b8fc4db7faf4b9c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tile_gutter_mat
+    second: {fileID: 2100000, guid: d87a6bcaa88ace742940016ddaa8b664, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tile_handrail_yellow_mat
+    second: {fileID: 2100000, guid: 9e9e6b8e60862a94d945794f949f0d05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tile_support_upright_mat
+    second: {fileID: 2100000, guid: ded06cc66ee54c940ab0aa123d273b3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tile_tube_ribbed_mat
+    second: {fileID: 2100000, guid: f17d20fdbf422c645b336890daf7f376, type: 2}
   materials:
     importMaterials: 1
     materialName: 1

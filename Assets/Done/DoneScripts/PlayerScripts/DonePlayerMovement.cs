@@ -8,6 +8,9 @@ public class DonePlayerMovement : MonoBehaviour
 	public float speedDampTime = 0.1f;	// The damping for the speed parameter
 	
 	
+
+	private Rigidbody _rigidbody;		// Reference to the Rigidbody.
+	private AudioSource _audio;			// Reference to the AudioSource.
 	private Animator anim;				// Reference to the animator component.
 	private DoneHashIDs hash;			// Reference to the HashIDs.
 	
@@ -15,6 +18,8 @@ public class DonePlayerMovement : MonoBehaviour
 	void Awake ()
 	{
 		// Setting up the references.
+		_rigidbody = GetComponent<Rigidbody>();
+		_audio = GetComponent<AudioSource>();
 		anim = GetComponent<Animator>();
 		hash = GameObject.FindGameObjectWithTag(DoneTags.gameController).GetComponent<DoneHashIDs>();
 		
@@ -73,10 +78,10 @@ public class DonePlayerMovement : MonoBehaviour
 		Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
 		
 		// Create a rotation that is an increment closer to the target rotation from the player's rotation.
-		Quaternion newRotation = Quaternion.Lerp(rigidbody.rotation, targetRotation, turnSmoothing * Time.deltaTime);
+		Quaternion newRotation = Quaternion.Lerp(_rigidbody.rotation, targetRotation, turnSmoothing * Time.deltaTime);
 		
 		// Change the players rotation to this new rotation.
-		rigidbody.MoveRotation(newRotation);
+		_rigidbody.MoveRotation(newRotation);
 	}
 	
 	
@@ -86,13 +91,13 @@ public class DonePlayerMovement : MonoBehaviour
 		if(anim.GetCurrentAnimatorStateInfo(0).nameHash == hash.locomotionState)
 		{
 			// ... and if the footsteps are not playing...
-			if(!audio.isPlaying)
+			if(!_audio.isPlaying)
 				// ... play them.
-				audio.Play();
+				_audio.Play();
 		}
 		else
 			// Otherwise stop the footsteps.
-			audio.Stop();
+			_audio.Stop();
 		
 		// If the shout input has been pressed...
 		if(shout)

@@ -26,7 +26,7 @@ public class DoneEnemyShooting : MonoBehaviour
 		// Setting up the references.
 		anim = GetComponent<Animator>();
 		laserShotLine = GetComponentInChildren<LineRenderer>();
-		laserShotLight = laserShotLine.gameObject.light;
+		laserShotLight = laserShotLine.gameObject.GetComponent<Light>();
 		col = GetComponent<SphereCollider>();
 		player = GameObject.FindGameObjectWithTag(DoneTags.player).transform;
 		playerHealth = player.gameObject.GetComponent<DonePlayerHealth>();

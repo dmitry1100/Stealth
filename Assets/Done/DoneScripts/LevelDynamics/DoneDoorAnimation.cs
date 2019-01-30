@@ -8,6 +8,7 @@ public class DoneDoorAnimation : MonoBehaviour
 	public AudioClip accessDeniedClip;				// Clip to play when the player doesn't have the key for the door.
 	
 	
+	private AudioSource _audio;						// Reference to the AudioSource.
 	private Animator anim;							// Reference to the animator component.
 	private DoneHashIDs hash;						// Reference to the HashIDs script.
 	private GameObject player;						// Reference to the player GameObject.
@@ -18,6 +19,7 @@ public class DoneDoorAnimation : MonoBehaviour
 	void Awake ()
 	{
 		// Setting up the references.
+		_audio = GetComponent<AudioSource>();
 		anim = GetComponent<Animator>();
 		hash = GameObject.FindGameObjectWithTag(DoneTags.gameController).GetComponent<DoneHashIDs>();
 		player = GameObject.FindGameObjectWithTag(DoneTags.player);
@@ -40,8 +42,8 @@ public class DoneDoorAnimation : MonoBehaviour
 				else
 				{
 					// If the player doesn't have the key play the access denied audio clip.
-					audio.clip = accessDeniedClip;
-					audio.Play();
+					_audio.clip = accessDeniedClip;
+					_audio.Play();
 				}
 			}
 			else
@@ -74,11 +76,11 @@ public class DoneDoorAnimation : MonoBehaviour
 		anim.SetBool(hash.openBool,count > 0);
 		
 		// If the door is opening or closing...
-		if(anim.IsInTransition(0) && !audio.isPlaying)
+		if(anim.IsInTransition(0) && !_audio.isPlaying)
 		{
 			// ... play the door swish audio clip.
-			audio.clip = doorSwishClip;
-			audio.Play();
+			_audio.clip = doorSwishClip;
+			_audio.Play();
 		}
 	}
 }

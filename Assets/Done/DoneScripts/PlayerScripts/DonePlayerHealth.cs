@@ -8,6 +8,7 @@ public class DonePlayerHealth : MonoBehaviour
 	public AudioClip deathClip;							// The sound effect of the player dying.
 	
 	
+	private AudioSource _audio;							// Reference to the AudioSource.
 	private Animator anim;								// Reference to the animator component.
 	private DonePlayerMovement playerMovement;			// Reference to the player movement script.
 	private DoneHashIDs hash;							// Reference to the HashIDs.
@@ -20,6 +21,7 @@ public class DonePlayerHealth : MonoBehaviour
 	void Awake ()
 	{
 		// Setting up the references.
+		_audio = GetComponent<AudioSource>();
 		anim = GetComponent<Animator>();
 		playerMovement = GetComponent<DonePlayerMovement>();
 		hash = GameObject.FindGameObjectWithTag(DoneTags.gameController).GetComponent<DoneHashIDs>();
@@ -74,7 +76,7 @@ public class DonePlayerHealth : MonoBehaviour
 		lastPlayerSighting.position = lastPlayerSighting.resetPosition;
 		
 		// Stop the footsteps playing.
-		audio.Stop();
+		_audio.Stop();
 	}
 	
 	

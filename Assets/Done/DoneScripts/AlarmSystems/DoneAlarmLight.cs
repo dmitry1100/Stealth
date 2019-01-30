@@ -10,13 +10,17 @@ public class DoneAlarmLight : MonoBehaviour
 	public bool alarmOn;					// Whether or not the alarm is on.
 	
 	
+	private Light _light;					// Reference to the Light.
 	private float targetIntensity;			// The intensity that the light is aiming for currently.
 	
 	
 	void Awake ()
 	{
+		// Setting up the references.
+		_light = GetComponent<Light>();
+		
 		// When the level starts we want the light to be "off".
-		light.intensity = 0f;
+		_light.intensity = 0f;
 		
 		// When the alarm starts for the first time, the light should aim to have the maximum intensity.
 		targetIntensity = highIntensity;
@@ -29,21 +33,21 @@ public class DoneAlarmLight : MonoBehaviour
 		if(alarmOn)
 		{
 			// ... Lerp the light's intensity towards the current target.
-			light.intensity = Mathf.Lerp(light.intensity, targetIntensity, fadeSpeed * Time.deltaTime);
+			_light.intensity = Mathf.Lerp(_light.intensity, targetIntensity, fadeSpeed * Time.deltaTime);
 			
 			// Check whether the target intensity needs changing and change it if so.
 			CheckTargetIntensity();
 		}
 		else
 			// Otherwise fade the light's intensity to zero.
-			light.intensity = Mathf.Lerp(light.intensity, 0f, fadeSpeed * Time.deltaTime);
+			_light.intensity = Mathf.Lerp(_light.intensity, 0f, fadeSpeed * Time.deltaTime);
 	}
 	
 	
 	void CheckTargetIntensity ()
 	{
 		// If the difference between the target and current intensities is less than the change margin...
-		if(Mathf.Abs(targetIntensity - light.intensity) < changeMargin)
+		if(Mathf.Abs(targetIntensity - _light.intensity) < changeMargin)
 		{
 			// ... if the target intensity is high...
 			if(targetIntensity == highIntensity)

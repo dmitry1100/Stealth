@@ -9,6 +9,7 @@ public class DoneLiftTrigger : MonoBehaviour
 	public float liftSpeed = 3f;						// The speed at which the lift moves.
 	
 	
+	private AudioSource _audio;							// Reference to the AudioSource.
 	private GameObject player;							// Reference to the player.
 	private Animator playerAnim;						// Reference to the players animator component.
 	private DoneHashIDs hash;							// Reference to the HashIDs script.
@@ -22,6 +23,7 @@ public class DoneLiftTrigger : MonoBehaviour
 	void Awake ()
 	{
 		// Setting up references.
+		_audio = GetComponent<AudioSource>();
 		player = GameObject.FindGameObjectWithTag(DoneTags.player);
 		playerAnim = player.GetComponent<Animator>();
 		hash = GameObject.FindGameObjectWithTag(DoneTags.gameController).GetComponent<DoneHashIDs>();
@@ -86,9 +88,9 @@ public class DoneLiftTrigger : MonoBehaviour
 			transform.Translate(Vector3.up * liftSpeed * Time.deltaTime);
 			
 			// If the audio clip isn't playing...
-			if(!audio.isPlaying)
+			if(!_audio.isPlaying)
 				// ... play the clip.
-				audio.Play();
+				_audio.Play();
 			
 			// If the timer is greater than the amount of time before the level should end...
 			if(timer >= timeToEndLevel)

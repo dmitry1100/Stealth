@@ -11,6 +11,7 @@ public class DoneLastPlayerSighting : MonoBehaviour
 	public float musicFadeSpeed = 1f;									// The speed at which the 
 	
 	
+	private AudioSource _audio;											// Reference to the AudioSource.
 	private DoneAlarmLight alarm;										// Reference to the AlarmLight script.
 	private Light mainLight;											// Reference to the main light.
 	private AudioSource panicAudio;										// Reference to the AudioSource of the panic msuic.
@@ -19,14 +20,17 @@ public class DoneLastPlayerSighting : MonoBehaviour
 	
 	void Awake ()
 	{
+		// Setup the reference to the AudioSource.
+		_audio = GetComponent<AudioSource>();
+		
 		// Setup the reference to the alarm light.
 		alarm = GameObject.FindGameObjectWithTag(DoneTags.alarm).GetComponent<DoneAlarmLight>();
 		
 		// Setup the reference to the main directional light in the scene.
-		mainLight = GameObject.FindGameObjectWithTag(DoneTags.mainLight).light;
+		mainLight = GameObject.FindGameObjectWithTag(DoneTags.mainLight).GetComponent<Light>();
 		
 		// Setup the reference to the additonal audio source.
-		panicAudio = transform.FindChild("secondaryMusic").audio;
+		panicAudio = transform.Find("secondaryMusic").GetComponent<AudioSource>();
 		
 		// Find an array of the siren gameobjects.
 		GameObject[] sirenGameObjects = GameObject.FindGameObjectsWithTag(DoneTags.siren);
@@ -37,7 +41,7 @@ public class DoneLastPlayerSighting : MonoBehaviour
 		// For all the sirens allocate the audio source of the gameobjects.
 		for(int i = 0; i < sirens.Length; i++)
 		{
-			sirens[i] = sirenGameObjects[i].audio;
+			sirens[i] = sirenGameObjects[i].GetComponent<AudioSource>();
 		}
 	}
 	
@@ -88,7 +92,7 @@ public class DoneLastPlayerSighting : MonoBehaviour
 		if(position != resetPosition)
 		{
 			// ... fade out the normal music...
-			audio.volume = Mathf.Lerp(audio.volume, 0f, musicFadeSpeed * Time.deltaTime);
+			_audio.volume = Mathf.Lerp(_audio.volume, 0f, musicFadeSpeed * Time.deltaTime);
 			
 			// ... and fade in the panic music.
 			panicAudio.volume = Mathf.Lerp(panicAudio.volume, 0.8f, musicFadeSpeed * Time.deltaTime);
@@ -96,7 +100,7 @@ public class DoneLastPlayerSighting : MonoBehaviour
 		else
 		{
 			// Otherwise fade in the normal music and fade out the panic music.
-			audio.volume = Mathf.Lerp(audio.volume, 0.8f, musicFadeSpeed * Time.deltaTime);
+			_audio.volume = Mathf.Lerp(_audio.volume, 0.8f, musicFadeSpeed * Time.deltaTime);
 			panicAudio.volume = Mathf.Lerp(panicAudio.volume, 0f, musicFadeSpeed * Time.deltaTime);
 		}
 	}

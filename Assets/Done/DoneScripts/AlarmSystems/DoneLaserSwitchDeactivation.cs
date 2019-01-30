@@ -7,12 +7,14 @@ public class DoneLaserSwitchDeactivation : MonoBehaviour
 	public Material unlockedMat;		 	// The screen's material to show the laser has been unloacked.
 	
 	
+	private AudioSource _audio;				// Reference to the AudioSource.
 	private GameObject player;				// Reference to the player.
 	
 	
 	void Awake ()
 	{
 		// Setting up the reference.
+		_audio = GetComponent<AudioSource>();
 		player = GameObject.FindGameObjectWithTag(DoneTags.player);
 	}
 	
@@ -34,12 +36,12 @@ public class DoneLaserSwitchDeactivation : MonoBehaviour
 		laser.SetActive(false);
 		
 		// Store the renderer component of the screen.
-		Renderer screen = transform.Find("prop_switchUnit_screen_001").renderer;
+		Renderer screen = transform.Find("prop_switchUnit_screen_001").GetComponent<Renderer>();
 		
 		// Change the material of the screen to the unlocked material.
 		screen.material = unlockedMat;
 		
 		// Play switch deactivation audio clip.
-		audio.Play();
+		_audio.Play();
 	}
 }
