@@ -1,0 +1,80 @@
+# OS generated trash
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+[Ee]hthumbs.db
+[Tt]humbs.db
+
+# Build results
+/[Bb]in/
+/[Bb]in.meta
+/[Oo]bj/
+/[Oo]bj.meta
+/[Ee]xportedObj/
+/[Ee]xportedObj.meta
+/[Bb]uild/
+/[Bb]uild.meta
+
+# Unity generated temp folders
+/[Tt]emp/
+/[Tt]emp.meta
+/[Ll]ibrary/
+/[Ll]ibrary.meta
+/[Ll]ogs/
+/[Ll]ogs.meta
+/PlaygroundCache/
+/PlaygroundCache.meta
+
+# Unity generated project
+/*.csproj
+/*.csproj.meta
+/*.sln
+/*.sln.meta
+/*.unityproj
+/*.unityproj.meta
+/*.booproj
+/*.booproj.meta
+
+# User-specific and IDE generated files
+.vs/
+*.suo
+*.suo.meta
+*.user
+*.user.meta
+*.sln.docstates
+*.sln.docstates.meta
+*.userprefs
+*.userprefs.meta
+*.svd
+*.svd.meta
+*.pidb
+*.pidb.meta
+*.exe.stackdump
+*.exe.stackdump.meta
+*.dSYM
+*.dSYM.meta
+sysinfo.txt
+sysinfo.txt.meta
+.vscode/launch.json
+.vscode/.*
+
+# Folders with generated content
+Assets/**/[Gg]enerated.meta
+Assets/**/[Gg]enerated/
+
+# Folders with backups
+Assets/**/[Bb]ackup/
+Assets/**/[Bb]ackup.meta
+
+# Houdini
+HoudiniTemp/
+HoudiniEngineAssetCache/
+HoudiniEngineAssetCache.meta
+
+# Xcode
+xcuserdata/
+*.xccheckout
+
+IgnoreMe/
