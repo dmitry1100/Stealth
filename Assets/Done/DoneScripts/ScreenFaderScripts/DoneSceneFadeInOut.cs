@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class DoneSceneFadeInOut : MonoBehaviour
@@ -14,7 +15,7 @@ public class DoneSceneFadeInOut : MonoBehaviour
 	{
 		// Setting up the references.
 		_guiTexture = GetComponent<GUITexture>();
-		
+
 		// Set the texture so that it is the the size of the screen and covers it.
 		_guiTexture.pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
 	}
@@ -72,6 +73,7 @@ public class DoneSceneFadeInOut : MonoBehaviour
 		// If the screen is almost black...
 		if(_guiTexture.color.a >= 0.95f)
 			// ... reload the level.
-			Application.LoadLevel(0);
+			SceneManager.LoadScene(0);
+	
 	}
 }

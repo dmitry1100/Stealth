@@ -54,7 +54,7 @@ public class DoneEnemyAI : MonoBehaviour
 	void Shooting ()
 	{
 		// Stop the enemy where it is.
-		nav.Stop();
+		nav.isStopped = true;
 	}
 	
 	
