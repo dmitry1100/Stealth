@@ -4,4 +4,6 @@ https://assetstore.unity.com/packages/essentials/tutorial-projects/stealth-unity
 
 It was upgraded with Unity autoupgrade API with some manual tuning.
 
-Maybe upgrade was not very accurate but at the first sight it looks OK.
+Maybe upgrade was not accurate but at the first sight it looks OK.
+
+Lightmaps and navigation are still broken.
